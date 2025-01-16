@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund Flow - Payment</title>
+    <style>
+        /* Background Image for the Entire Page */
+        body {
+            background-image: url('payment.png'); /* Path to your background image */
+            background-size: cover;          /* Ensures the image covers the entire page */
+            background-position: center;     /* Centers the image */
+            background-repeat: no-repeat;    /* Prevents tiling of the image */
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        /* Overlay for better readability */
+        .overlay {
+            background: rgba(255, 255, 255, 0.85); /* Semi-transparent background overlay */
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Styling for the payment form */
+        .payment-section {
+            background: rgb(255, 255, 255);
+            padding: 30px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+            text-align: center;
+        }
+
+        h2 {
+            color: #1f4921;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            text-align: left;
+            color: #555;
+        }
+
+        input[type="text"], input[type="number"], input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #45a049;
+            outline: none;
+        }
+
+        /* Validation messages */
+        .validation-message {
+            display: none;
+            font-size: 12px;
+            color: #d93025;
+            text-align: left;
+            margin-top: 5px;
+        }
+
+        /* Success validation */
+        .validation-success {
+            color: #1f4921;
+        }
+
+        /* Donate button */
+        .donate-btn {
+            background-color: #1f4921;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .donate-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <!-- Payment Section -->
+        <section class="payment-section">
+            <h2>Make a Donation</h2>
+            <p>Support the campaign and make a difference!</p>
+            
+                <form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+                <input type="hidden" name="business" value="sb-ndu7j34031857@business.example.com">
+                <input type="hidden" name="return" value="http://localhost/php-practical-work/payment-gateway/paypal/success.php">
+                <input type="hidden" name="cancel_return" value="http://localhost/php-practical-work/payment-gateway/paypal/cancel.php">
+                
+                <!-- Donation Amount -->
+                <div class="input-group">
+                    <label for="donation-amount">Donation Amount</label>
+                    <input type="number" id="donation-amount" name="donation-amount" placeholder="Enter amount" required>
+                    <div class="validation-message" id="donation-validation">Please enter a valid amount greater than 0.</div>
+                </div>
+
+                <!-- Name on Card -->
+                <div class="input-group">
+                    <label for="name">Name on Card</label>
+                    <input type="text" id="name" name="name" placeholder="Enter name" required>
+                    <div class="validation-message" id="name-validation">Name on card cannot be empty.</div>
+                </div>
+
+                <!-- Card Number -->
+                <div class="input-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="12-digit card number" required>
+                    <div class="validation-message" id="card-validation">Card number must be exactly 12 digits.</div>
+                </div>
+
+                <!-- CVV -->
+                <div class="input-group">
+                    <label for="cvv">CVV</label>
+                    <input type="password" id="cvv" name="cvv" placeholder="3-digit code" required>
+                    <div class="validation-message" id="cvv-validation">CVV must be exactly 3 digits.</div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="donate-btn">Donate Now</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        // Input validation
+        document.getElementById("donation-amount").addEventListener("input", function() {
+            const donationValidation = document.getElementById("donation-validation");
+            if (this.value > 0) {
+                donationValidation.style.display = "none";
+            } else {
+                donationValidation.style.display = "block";
+            }
+        });
+
+        document.getElementById("name").addEventListener("input", function() {
+            const nameValidation = document.getElementById("name-validation");
+            if (this.value.trim() !== "") {
+                nameValidation.style.display = "none";
+            } else {
+                nameValidation.style.display = "block";
+            }
+        });
+
+        document.getElementById("card-number").addEventListener("input", function() {
+            const cardValidation = document.getElementById("card-validation");
+            const regex = /^\d{12}$/;
+            if (regex.test(this.value)) {
+                cardValidation.style.display = "none";
+            } else {
+                cardValidation.style.display = "block";
+            }
+        });
+
+        document.getElementById("cvv").addEventListener("input", function() {
+            const cvvValidation = document.getElementById("cvv-validation");
+            const regex = /^\d{3}$/;
+            if (regex.test(this.value)) {
+                cvvValidation.style.display = "none";
+            } else {
+                cvvValidation.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

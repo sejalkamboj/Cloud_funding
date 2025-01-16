@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Razorpay Tutorial</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      <style type="text/css">
+         @import url('https://fonts.googleapis.com/css2?family=Mukta+Vaani:wght@300;700&family=Poppins:wght@400;500;700&display=swap');
+         *{
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+         font-family: poppins;
+         font-weight: 400px;
+         transition: .3s ease;
+         color: #333;
+         }
+         html{
+         scroll-behavior: smooth;
+         }
+         :root{
+         --p:#784cfb;
+         }body{
+         background: #efefef;
+         }
+         input{
+         padding: 1.2rem 2.1rem;
+         margin: 0.6rem 0;
+         border: none;width: 100%;
+         outline: none;
+         background: #f3f3f3;
+         border-radius: 2rem;
+         font-weight: 500;
+         transition: 0.3s ease;
+         }
+         input:focus{
+         border:1px solid var(--p)!important;
+         }.btn{
+         display: inline-block;
+         padding: 0.85rem 2rem;
+         background-color: var(--p);
+         color: #fff;
+         font-size: .8rem;
+         border-radius: 2rem;
+         text-transform: uppercase;
+         cursor: pointer;border:none;
+         outline: none;
+         font-weight: 500;
+         transition: 0.3s;margin-top: 20px;
+         }.btn:hover{
+         background-color: #333;
+         color: #fff!important;
+         }.wrapper{
+         width: 500px;
+         height: auto;
+         border-radius: 10px;
+         background: #fff;
+         padding: 50px;
+         box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+         position: absolute;top:50%;
+         left: 50%;
+         transform: translate(-50% , -50%);
+         } .sub-head{
+         text-align: center;
+         font-size: 2.8rem;
+         font-weight: 700;
+         color: #111;
+         position: relative;
+         }
+         .sub-head::before{
+         content: attr(data-item);
+         font-size: .8rem;
+         color: var(--p);
+         letter-spacing: 2px;
+         text-transform: uppercase;
+         top: -8px;
+         position: absolute;
+         font-weight: 500;
+         transform: translate(-50% , -50%);
+         left: 50%;
+         }
+         .sub-head::after{
+         content: "";
+         font-size: .8rem;
+         background: var(--p);
+         letter-spacing: 2px;
+         height: 5px;
+         width: 100px;
+         border-radius: 3px;
+         text-transform: uppercase;
+         bottom: -2px;
+         position: absolute;
+         font-weight: 500;
+         transform: translate(-50% , -50%);
+         left: 50%;
+         }
+      </style>
+      <script type="text/javascript">$(document).ready(function() {
+  $(".btn").click(function() {
+    var name = $(".name").val();
+    var phone = $(".number").val();
+    var email = $(".email").val();
+    var amount = $(".amount").val();
+    if (name != "" && phone != "" && email != "") {
+      /***/
+      var options = {
+
+        /* EDIT THE VALUES */
+        key: "YOUR API KEY",
+        name: "Tech With Onkar",
+        description: "Donation",
+        image: "https://yt3.ggpht.com/ytc/AL5GRJV8C79mjvuZKWalgTdrO7QnpREZNbj66eP1rV9I4g=s240-c-k-c0x00ffffff-no-rj",
+        /* Edit above only */
+        prefill: {
+          name: name,
+          email: email,
+          contact: phone,
+        },
+
+        theme: {
+          color: "#fea317",
+        },
+
+        amount: amount * 100,
+        currency: "INR",
+        handler: function(response) {
+
+          console.log(response.razorpay_payment_id);
+          /* AFTER SUCCESSFUL PAYMENT CODE GOES BELOW */
+          /**/
+
+        },
+        /**/
+        modal: {
+          ondismiss: function() {
+
+            console.log("Modal closed");
+
+          }
+        },
+        /**/
+      };
+      var rzp1 = new Razorpay(options);
+
+      rzp1.on('payment.failed',
+      function(response) {
+
+        console.log("Payment Failed!");
+
+      });
+
+      rzp1.open();
+      /*razor*/
+    } else {
+      alert("Fill the fields properly!");
+    }
+  });
+});  </script>
+   </head>
+   <body>
+      <div class="wrapper">
+         <h2 class="sub-head" data-item="help us">Donate Us</h2>
+         <br>
+         <input type="text" placeholder="Name*" class="name"><br>
+         <input type="number" placeholder="Phone Number*" class="number"><br>
+         <input type="email" placeholder="Email*" required class="email"><br>
+         <input type="number" placeholder="Amount*" required class="amount"><br>
+         <button class="btn">Pay Now</button>
+      </div>
+   </body>
+</html>
