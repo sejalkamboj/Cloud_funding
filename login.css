@@ -1,0 +1,112 @@
+/* General body and layout settings */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-image: url('minor.png.jpg');
+    background-size: cover; 
+    background-position: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+/* Container for the login box */
+.login-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the login box */
+.login-box {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    text-align: center;
+}
+
+/* Login header styling */
+.login-header {
+    margin-bottom: 20px;
+}
+
+.login-logo {
+    width: 400px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.6em;
+    color: #007BFF; /* Blue color for header */
+}
+
+/* Input field styling */
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 1em;
+    color: #333;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+/* Login button styling */
+.login-btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Footer links styling */
+.login-footer {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+.login-footer a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.login-footer a:hover {
+    text-decoration: underline;
+}
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+
+
+.success-message {
+    color: green;
+    font-size: 0.9em;
+    margin-top: 10px;
+}

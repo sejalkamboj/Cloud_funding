@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund Flow - Crowdfunding Platform for NGOs</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        function handleLogin(event) {
+            event.preventDefault(); // Prevent default form submission
+            // Here you can add authentication logic (e.g., check username and password)
+            // For now, just redirect to index.html
+            window.location.href = 'index.html';
+        }
+    </script>
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="fund-flow-logo.png" alt="Fund Flow Logo" width="400" height="100"/>
+                <h1>Fund Flow</h1>
+            
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="campaigns.html">Campaigns</a></li>
+                <li><a href="#about-us">About Us</a></li> <!-- Scrolls to About Us Section -->
+            </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h2>Empowering NGOs through Crowdfunding</h2>
+                <p>Join hands to create a meaningful impact by supporting campaigns for education, healthcare, clean water, and more.</p>
+
+                <!-- Search Bar Tool -->
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="Search for campaigns, NGOs, or projects">
+                    <button type="button" id="search-button">Search</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Campaigns Section -->
+        <section class="featured-campaigns">
+            <h2>Featured Campaigns</h2>
+            <div class="campaigns-container">
+
+                <!-- Clean Water Initiative Campaign -->
+                <div class="campaign-card">
+                    <img src="water.jpg" alt="Clean Water Initiative">
+                    <div class="campaign-info">
+                        <h3><a href="clean-water.html">Clean Water Initiative</a></h3>
+                        <p>Raised: $15,000 / Goal: $20,000</p>
+                        <a href="login.html" class="pay-now-btn">Pay Now</a>
+                    </div>
+                </div>
+
+                <!-- Healthcare for Rural Areas Campaign -->
+                <div class="campaign-card">
+                    <img src="healthcare.jpg" alt="Healthcare for Rural Areas">
+                    <div class="campaign-info">
+                        <h3><a href="healthcare.html">Healthcare for Rural Areas</a></h3>
+                        <p>Raised: $7,000 / Goal: $10,000</p>
+                        <a href="login.html" class="pay-now-btn">Pay Now</a>
+                    </div>
+                </div>
+
+                <!-- Education for All Campaign -->
+                <div class="campaign-card">
+                    <img src="campaign1.jpg" alt="Education for All">
+                    <div class="campaign-info">
+                        <h3><a href="education.html">Education for All</a></h3>
+                        <p>Raised: $12,500 / Goal: $15,000</p>
+                        <a href="login.html" class="pay-now-btn">Pay Now</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about-us" class="about-us-section">
+            <h2>About Fund Flow</h2>
+            <p>Fund Flow is a crowdfunding platform designed to empower NGOs and social enterprises by helping them raise funds for meaningful causes. Here's what Fund Flow stands for:</p>
+
+            <ul class="about-us-list">
+                <li>We connect donors with NGOs working on critical social issues.</li>
+                <li>Fund Flow helps raise money for causes such as education, healthcare, clean water, and more.</li>
+                <li>Our platform allows NGOs to set clear fundraising goals and track their progress.</li>
+                <li>We offer a transparent system where every donation is tracked and accounted for.</li>
+                <li>Fund Flow promotes global giving, allowing donors to contribute from anywhere in the world.</li>
+                <li>We provide NGOs with tools to create engaging campaigns that attract more donors.</li>
+                <li>Our platform includes secure payment gateways to ensure safe transactions for donors and recipients.</li>
+                <li>We prioritize collaboration and work closely with NGOs to ensure their success.</li>
+                <li>Fund Flow is committed to sustainability, encouraging ongoing relationships between donors and NGOs.</li>
+                <li>We believe in making a positive social impact by empowering communities through collective action.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Fund Flow | Empowering NGOs through Crowdfunding</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
